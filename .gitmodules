@@ -1,0 +1,3 @@
+[submodule "spring-commons"]
+	path = spring-commons
+	url = git@github.com:ptitbob/spring-commons.git
