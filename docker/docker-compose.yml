@@ -1,0 +1,68 @@
+version: '3'
+networks:
+  cache_net:
+    external: true
+services:
+  # reverse proxy
+  nginx:
+    container_name: nginx
+    image: nginx:1.15.5
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    links:
+      - pgadmin
+#      - app-app-1
+#      - app-app-2
+    depends_on:
+      - pgadmin
+#      - app-app-1
+#      - app-app-2
+  # Applications
+#  app-1:
+#    build:
+#      ./app-app/
+#    image: shipstone/cache-demo-app:1.0
+#    container_name: app-1.0-1
+#    links:
+#      - app-db
+#    depends_on:
+#      - app-db
+#  app-2:
+#    build:
+#      ./app-app/
+#   image: shipstone/cache-demo-app:1.0
+#    container_name: app-1.0-2
+#    links:
+#      - app-db
+#    depends_on:
+#      - app-db
+#  # pgAdmin
+  pgadmin:
+    image: fenglc/pgadmin4:2.1-python2.7-alpine
+    container_name: pgadmin4
+    links:
+      - app-db:postgres
+    depends_on:
+      - app-db
+    ports:
+      - 5050:5050
+  # Bases de donnée
+  app-db:
+    build:
+      context: ./app-db/
+    image: shipstone/app-db:1.0
+    container_name: app-db
+    ports:
+      - 5433:5432
+  ehcache:
+    hostname: ehcache
+    image: terracotta/terracotta-server-oss:5.5.1
+    container_name: ehcache
+    environment:
+      - OFFHEAP_RESOURCE1_SIZE=256
+      - OFFHEAP_RESOURCE1_UNIT=MB
+      - OFFHEAP_RESOURCE1_NAME=primary-server-resource
+    ports:
+      - 9410:9410
