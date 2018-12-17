@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    properties:
+    show-sql: false
+  datasource:
+    url: jdbc:postgresql://zipcode-db:5432/postgres
+
+logging:
+  level:
+    root: ERROR
+    org.shipstone.demo.cache.zipcode: INFO
+    org.springframework: ERROR
+    org.hibernate: ERROR
+
+message:
+  standard: "docker - Application exemple code postal"
