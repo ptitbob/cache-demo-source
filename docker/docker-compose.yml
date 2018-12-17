@@ -15,20 +15,29 @@ services:
     links:
       - pgadmin
       - pingapp
+      - zipcode
 #      - app-app-1
 #      - app-app-2
     depends_on:
       - pgadmin
       - pingapp
+      - zipcode
 
   # Applications
   pingapp:
     build:
       ./ping-app/
-    image: shipstonr/pingapp:1.0
+    image: shipstone/pingapp:1.0
     container_name: pingapp
     ports:
       - 8081:8080
+  zipcode:
+    build:
+      ./zipcode-app/
+    image: shipstone/zipcode:1.1
+    container_name: zipcode
+    ports:
+      - 8082:8080
 #  app-1:
 #    build:
 #      ./app-app/
@@ -55,8 +64,10 @@ services:
     container_name: pgadmin4
     links:
       - app-db:postgres
+      - zipcode-db:postgres
     depends_on:
       - app-db
+      - zipcode-db
     ports:
       - 5050:5050
 
@@ -69,6 +80,14 @@ services:
     container_name: app-db
     ports:
       - 5432:5432
+  zipcode-db:
+    build:
+      context: ./zipcode-db/
+    image: shipstone/zipcode-db:1.1
+    container_name: zipcode-db
+    ports:
+      - 5433:5432
+
 
   # Cache partagé
 #  redis:
