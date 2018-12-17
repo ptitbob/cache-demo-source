@@ -1,0 +1,4 @@
+server:
+  port: 8082
+  level:
+    org.shipstone.demo.cache.pingapp: DEBUG

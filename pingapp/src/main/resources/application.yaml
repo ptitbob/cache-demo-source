@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: @spring.profiles.active@
+logging:
+  level:
+    root: ERROR
+    org.shipstone.demo.cache.pingapp: DEBUG
+server:
+  servlet:
+    context-path: "/api"
+  port: 8080

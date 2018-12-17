@@ -3,6 +3,7 @@ networks:
   cache_net:
     external: true
 services:
+
   # reverse proxy
   nginx:
     container_name: nginx
@@ -13,13 +14,21 @@ services:
       - 80:80
     links:
       - pgadmin
+      - pingapp
 #      - app-app-1
 #      - app-app-2
     depends_on:
       - pgadmin
-#      - app-app-1
-#      - app-app-2
+      - pingapp
+
   # Applications
+  pingapp:
+    build:
+      ./ping-app/
+    image: shipstonr/pingapp:1.0
+    container_name: pingapp
+    ports:
+      - 8081:8080
 #  app-1:
 #    build:
 #      ./app-app/
@@ -38,6 +47,8 @@ services:
 #      - app-db
 #    depends_on:
 #      - app-db
+
+
 #  # pgAdmin
   pgadmin:
     image: fenglc/pgadmin4:2.1-python2.7-alpine
@@ -48,6 +59,8 @@ services:
       - app-db
     ports:
       - 5050:5050
+
+
   # Bases de donnée
   app-db:
     build:
@@ -55,7 +68,15 @@ services:
     image: shipstone/app-db:1.0
     container_name: app-db
     ports:
-      - 5433:5432
+      - 5432:5432
+
+  # Cache partagé
+#  redis:
+#    image: redis:5.0
+#    container_name: redis
+#    ports:
+#      - 6379:6379
+
   ehcache:
     hostname: ehcache
     image: terracotta/terracotta-server-oss:5.5.1
