@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        show_sql: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+  # acces cache de type Redis
+  redis:
+    host: localhost
+    port: 6379
+  # acces cache de type Redis
+
+logging:
+  level:
+    org.shipstone.demo.cache.app: TRACE
+    org.hibernate: ERROR
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE # permet de visualiser dans les logs les valeurs des colonnes retournées et celle des paramètres bindés
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+app:
+  server:
+    ping: http://ping.docker.local/api/
+    zipcode: http://zipcode.docker.local/api/
