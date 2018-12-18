@@ -1,3 +1,23 @@
+drop table if exists person;
+drop sequence if exists person_sequence;
+
+create sequence person_sequence start 100 cache 10;
+
+create table person (
+  id bigint not null default nextval('person_sequence'),
+  login varchar(100) not null,
+  firstname varchar(100),
+  lastname varchar(100),
+  city_insee varchar(6),
+  zipcode varchar(10),
+  comments varchar(4000),
+  code_message varchar(10),
+  creator varchar(100) ,
+  created timestamp ,
+  modificator varchar(100),
+  modified timestamp
+);
+
 drop table if exists adm_message;
 drop sequence if exists adm_message_sequence;
 
