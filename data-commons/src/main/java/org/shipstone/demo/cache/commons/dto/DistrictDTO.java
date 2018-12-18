@@ -8,13 +8,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.shipstone.demo.cache.commons.web.Views;
 
+import java.io.Serializable;
+
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(NON_EMPTY)
-public class DistrictDTO {
+public class DistrictDTO implements Serializable {
+
+  private static final long serialVersionUID = 4496870284618815610L;
 
   @JsonView(Views.Details.class)
   @JsonProperty(value = "region-code", index = 3)
