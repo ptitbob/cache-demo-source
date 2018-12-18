@@ -14,6 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * Demo de l'utilisation du cache en envirronement Spring
+ *
+ * @author François Robert
+ * LICENCE Apache 2.0
+ */
 @Repository
 @CacheConfig(cacheNames = "people")
 public interface PersonRepository extends JpaRepository<Person, Long>, JpaSpecificationExecutor<Person> {

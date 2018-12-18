@@ -32,6 +32,12 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.http.HttpStatus.OK;
 
+/**
+ * Demo de l'utilisation du cache en envirronement Spring
+ *
+ * @author François Robert
+ * LICENCE Apache 2.0
+ */
 @RestController
 @RequestMapping("people")
 public class PersonController implements ResponseIdentifiedObjectProcessor, ConsistencyUpdateProcessor {

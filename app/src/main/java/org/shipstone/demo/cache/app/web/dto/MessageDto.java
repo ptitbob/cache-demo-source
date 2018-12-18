@@ -10,6 +10,12 @@ import org.shipstone.demo.cache.commons.web.Views;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+/**
+ * Demo de l'utilisation du cache en envirronement Spring
+ *
+ * @author François Robert
+ * LICENCE Apache 2.0
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

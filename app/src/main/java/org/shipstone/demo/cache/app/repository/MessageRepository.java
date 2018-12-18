@@ -19,15 +19,15 @@ import java.util.Optional;
  *
  * @author François Robert
  * LICENCE Apache 2.0
- */@Repository
+ */
+@Repository
+@Transactional(readOnly = true)
 @CacheConfig(cacheNames = {"message"})
 public interface MessageRepository extends JpaRepository<Message, Long>, JpaSpecificationExecutor<Message> {
 
-  @Transactional(readOnly = true)
   @Cacheable(key = "#p0", unless = "#result == null")
   Optional<Message> findByCode(String code);
 
-  @Transactional(readOnly = true)
   @Query("select count(m) > 0 from Message m where upper(m.code) = :code")
   boolean messageExist(@Param("code") String code);
 

@@ -4,6 +4,12 @@ import org.shipstone.demo.cache.commons.web.exceptions.RegisteredException;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
+/**
+ * Demo de l'utilisation du cache en envirronement Spring
+ *
+ * @author François Robert
+ * LICENCE Apache 2.0
+ */
 public class ZipcodeTooManyCitiesException extends RegisteredException {
 
   public ZipcodeTooManyCitiesException(String zipcode) {

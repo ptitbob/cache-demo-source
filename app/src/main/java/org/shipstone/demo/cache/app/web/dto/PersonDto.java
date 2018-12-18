@@ -17,6 +17,12 @@ import javax.validation.constraints.Pattern;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
+/**
+ * Demo de l'utilisation du cache en envirronement Spring
+ *
+ * @author François Robert
+ * LICENCE Apache 2.0
+ */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor

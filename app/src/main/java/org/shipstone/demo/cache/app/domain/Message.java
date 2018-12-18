@@ -2,6 +2,7 @@ package org.shipstone.demo.cache.app.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.shipstone.demo.cache.commons.domain.IdentifiedObject;
 
@@ -10,12 +11,19 @@ import java.io.Serializable;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+/**
+ * Demo de l'utilisation du cache en envirronement Spring
+ *
+ * @author François Robert
+ * LICENCE Apache 2.0
+ */
 @Entity
 @Table(name = "adm_message")
 @SequenceGenerator(name = "messageSequenceGenerator", sequenceName = "adm_message_sequence", allocationSize = 10)
+@Data
+@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Message implements IdentifiedObject<String>, Serializable {
 
   private static final long serialVersionUID = 5284124935064405558L;

@@ -28,6 +28,12 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+/**
+ * Demo de l'utilisation du cache en envirronement Spring
+ *
+ * @author François Robert
+ * LICENCE Apache 2.0
+ */
 @RestController
 @RequestMapping("messages")
 public class MessageController implements ConsistencyUpdateProcessor, ResponseIdentifiedObjectProcessor {

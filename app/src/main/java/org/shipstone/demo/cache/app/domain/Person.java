@@ -13,12 +13,19 @@ import java.io.Serializable;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
+/**
+ * Demo de l'utilisation du cache en envirronement Spring
+ *
+ * @author François Robert
+ * LICENCE Apache 2.0
+ */
 @Entity
+@Table(name = "person")
+@SequenceGenerator(name = "personSequenceGenerator", sequenceName = "person_sequence", allocationSize = 10)
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(name = "personSequenceGenerator", sequenceName = "person_sequence", allocationSize = 10)
 public class Person extends Followed<String> implements IdentifiedObject<String>, Serializable {
 
   private static final long serialVersionUID = 8540869348609499621L;
