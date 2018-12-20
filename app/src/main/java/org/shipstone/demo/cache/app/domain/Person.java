@@ -8,7 +8,6 @@ import org.shipstone.demo.cache.commons.data.Followed;
 import org.shipstone.demo.cache.commons.domain.IdentifiedObject;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 
 import static javax.persistence.GenerationType.SEQUENCE;
