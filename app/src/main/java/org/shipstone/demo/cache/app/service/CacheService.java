@@ -45,7 +45,6 @@ public class CacheService {
     logger.info("Suppression du contenu du cache {}", cacheName);
     // L'appel au cache native directement est lié à un bug de l'implementation de la JSR 107 (javax.cache->cache-api) qui n'a pas correctement implementé le RàZ d'un cache :(
     // https://github.com/ehcache/ehcache3/issues/2364
-    // https://github.com/ehcache/ehcache3/issues/2364
     clearCache(cacheName, cache -> ((JCacheCache)cache).getNativeCache().clear());
   }
 
