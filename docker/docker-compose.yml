@@ -16,14 +16,51 @@ services:
       - pgadmin
       - pingapp
       - zipcode
-#      - app-app-1
-#      - app-app-2
+      - app-1
+      - app-2
     depends_on:
       - pgadmin
       - pingapp
       - zipcode
-
+      - app-1
+      - app-2
+    networks:
+      - cache_net
   # Applications
+  app-1:
+    build:
+      ./app-app/
+    image: shipstone/app:1.0
+    container_name: app-1
+    ports:
+      - 8083:8080
+    links:
+      - pingapp
+      - zipcode
+      - app-db
+    depends_on:
+      - pingapp
+      - zipcode
+      - app-db
+    networks:
+      - cache_net
+  app-2:
+    build:
+      ./app-app/
+    image: shipstone/app:1.0
+    container_name: app-2
+    ports:
+      - 8084:8080
+    links:
+      - pingapp
+      - zipcode
+      - app-db
+    depends_on:
+      - pingapp
+      - zipcode
+      - app-db
+    networks:
+      - cache_net
   pingapp:
     build:
       ./ping-app/
@@ -31,6 +68,8 @@ services:
     container_name: pingapp
     ports:
       - 8081:8080
+    networks:
+      - cache_net
   zipcode:
     build:
       ./zipcode-app/
@@ -38,6 +77,8 @@ services:
     container_name: zipcode
     ports:
       - 8082:8080
+    networks:
+      - cache_net
 #  app-1:
 #    build:
 #      ./app-app/
@@ -70,7 +111,8 @@ services:
       - zipcode-db
     ports:
       - 5050:5050
-
+    networks:
+      - cache_net
 
   # Bases de donnée
   app-db:
@@ -80,6 +122,8 @@ services:
     container_name: app-db
     ports:
       - 5432:5432
+    networks:
+      - cache_net
   zipcode-db:
     build:
       context: ./zipcode-db/
@@ -87,7 +131,8 @@ services:
     container_name: zipcode-db
     ports:
       - 5433:5432
-
+    networks:
+      - cache_net
 
   # Cache partagé
 #  redis:
@@ -106,3 +151,5 @@ services:
       - OFFHEAP_RESOURCE1_NAME=primary-server-resource
     ports:
       - 9410:9410
+    networks:
+      - cache_net
