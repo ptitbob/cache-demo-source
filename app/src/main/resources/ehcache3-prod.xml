@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config
+        xmlns="http://www.ehcache.org/v3"
+        xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
+        xmlns:mn="http://www.ehcache.org/v3/management"
+        xmlns:tc="http://www.ehcache.org/v3/clustered"
+>
+    <!-- prod -->
+    <service>
+        <tc:cluster>
+            <tc:connection url="terracotta://ehcache:9410/demo-cache"/>
+            <tc:server-side-config auto-create="true">
+                <tc:default-resource from="primary-server-resource"/>
+            </tc:server-side-config>
+        </tc:cluster>
+    </service>
+
+    <cache-template name="app-default">
+        <expiry>
+            <ttl unit="seconds">30</ttl>
+        </expiry>
+        <resources>
+            <heap>10</heap>
+            <offheap unit="MB">1</offheap>
+            <tc:clustered-dedicated unit="MB">10</tc:clustered-dedicated>
+        </resources>
+        <tc:clustered-store consistency="strong"/>
+    </cache-template>
+
+    <cache-template name="external-default">
+        <expiry>
+            <ttl unit="minutes">10</ttl>
+        </expiry>
+        <resources>
+            <heap>10</heap>
+            <offheap unit="MB">1</offheap>
+            <tc:clustered-dedicated unit="MB">10</tc:clustered-dedicated>
+        </resources>
+        <tc:clustered-store consistency="strong"/>
+    </cache-template>
+
+
+    <cache alias="city" uses-template="external-default"/>
+    <cache alias="message" uses-template="app-default" />
+    <cache alias="people" uses-template="app-default" />
+    <cache alias="pingEcho" uses-template="external-default" />
+
+</config>

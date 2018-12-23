@@ -16,5 +16,5 @@ logging:
     org.hibernate.SQL: DEBUG
 app:
   server:
-    ping: http://pingapp/api/
-    zipcode: http://zipcode/api/
+    ping: http://pingapp:8080/api/
+    zipcode: http://zipcode:8080/api/

@@ -83,7 +83,7 @@
         <dependency>
             <groupId>org.shipstone</groupId>
             <artifactId>spring-commons</artifactId>
-            <version>[1.1,)</version>
+            <version>[1.2,)</version>
         </dependency>
         <dependency>
             <groupId>org.shipstone.demo.cache</groupId>
@@ -121,6 +121,17 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>application.yaml</include>
+                    <include>application-${spring.profiles.active}.yaml</include>
+                    <include>ehcache3-${spring.profiles.active}.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

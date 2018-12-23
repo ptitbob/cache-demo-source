@@ -25,7 +25,7 @@ spring:
   # acces cache de type ehCache
   cache:
     jcache:
-      config: classpath:ehcache3.xml
+      config: classpath:ehcache3-@spring.profiles.active@.xml
     type: jcache
   # acces cache de type ehCache
 
