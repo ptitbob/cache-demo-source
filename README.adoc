@@ -9,6 +9,7 @@ Elle organise ses donnée depuis 2 tables décrite dans le container `app-db`.
 Un accès HTTP simulant un accès long `ping-app`.
 Et un autre accès HTTP revoyant des données relativement importante `zipcode-app` ayant sa propre base de donnée (`zipcode-db`).
 
+image:documentation/application.png[]
 
 Chaque utilisation est isolée dans une branche.
 
@@ -47,6 +48,8 @@ et pour un accès sur une donnée déjà en cache:
 ```
 1545659240.008038 [0 172.19.0.1:33824] "GET" "message::TOT"
 ```
+
+https://redis.io/topics/rediscli[Liste des commandes redis-cli]
 
 == Hazelcast ==
 
