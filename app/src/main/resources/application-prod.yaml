@@ -6,6 +6,11 @@ spring:
         format_sql: true
   datasource:
     url: jdbc:postgresql://app-db:5432/postgres
+  # acces cache de type Redis
+  redis:
+    host: redis
+    port: 6379
+  # acces cache de type Redis
 
 logging:
   level:

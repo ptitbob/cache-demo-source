@@ -15,18 +15,18 @@ spring:
     password: postgres
 
   # acces cache de type Redis
-#  cache:
-#    type: redis
-#    redis:
-#      time-to-live: 6000 # TTL global en ms
-#      # les données de connexion au Redis propre à chaque env.
+  cache:
+    type: redis
+    redis:
+      time-to-live: 6000 # TTL global en ms
+      # les données de connexion au Redis propre à chaque env.
   # acces cache de type Redis
 
   # acces cache de type ehCache
-  cache:
-    jcache:
-      config: classpath:ehcache3-@spring.profiles.active@.xml
-    type: jcache
+#  cache:
+#    jcache:
+#      config: classpath:ehcache3-@spring.profiles.active@.xml
+#    type: jcache
   # acces cache de type ehCache
 
 logging:

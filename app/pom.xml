@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.shipstone.demo.cache</groupId>
     <artifactId>app</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-REDIS</version>
     <name>app</name>
     <description>Demo project for Spring Boot</description>
 
@@ -62,22 +62,20 @@
             <artifactId>cache-api</artifactId>
         </dependency>
         <!-- Redis -->
-        <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-        -->
         <!-- ehCache -->
-        <dependency>
+        <!--dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
-        </dependency>
+        </dependency-->
         <!-- ehCache partagé (cluster) -->
-        <dependency>
+        <!--dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache-clustered</artifactId>
-        </dependency>
+        </dependency-->
         <!-- accès aux cache partagé -->
 
         <dependency>
