@@ -13,8 +13,44 @@ image:documentation/application.png[]
 
 Chaque utilisation est isolée dans une branche.
 
+* ehCache in-memory
+** url...
+* ehCache distribué - serveur terracotta OSS
+** https://github.com/ptitbob/cache-demo-source/tree/ehcache-distribue
+* REDIS distribué - serveur REDIS
+** https://github.com/ptitbob/cache-demo-source/tree/redis-distribue
+* Hazelcast
+** url...
+
+Le load balancing sur les deux noeud de l'application est assué par un NGINX qui permet aussi d'acceder à pgAdmin.
+
+Afin de permettre l'accès via nGinx, vous devez configurer votre Hosts :
+
+```
+# pour la demo spring cache
+127.0.0.1   docker.local
+fe80::1%lo0 pgadmin.docker.local
+127.0.0.1   pgadmin.docker.local
+fe80::1%lo0 glowroot.docker.local
+127.0.0.1   glowroot.docker.local
+fe80::1%lo0 zipcode.docker.local
+127.0.0.1   zipcode.docker.local
+fe80::1%lo0 ping.docker.local
+127.0.0.1   ping.docker.local
+fe80::1%lo0 app.docker.local
+127.0.0.1   app.docker.local
+```
 
 == les URLs ==
+
+L'application expose une serie d'URLs:
+
+* Les message
+** liste : GET http://app.docker.local/api/messages
+** un message : GET http://app.docker.local/api/messages/(CODE)
+** création : POST http://app.docker.local/api/messages
+** suppression : DELETE http://app.docker.local/api/messages/(CODE)
+** modification : PUT http://app.docker.local/api/messages/[CODE]
 
 == ehCache in-memory ==
 

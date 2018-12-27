@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "01310a97-ee89-4923-9bdd-1a6d46b707f5",
+		"name": "cache-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "messages",
+			"item": [
+				{
+					"name": "Liste",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://app.docker.local/api/messages",
+							"protocol": "http",
+							"host": [
+								"app",
+								"docker",
+								"local"
+							],
+							"path": [
+								"api",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Message (unitaire)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://app.docker.local/api/messages/TIT",
+							"protocol": "http",
+							"host": [
+								"app",
+								"docker",
+								"local"
+							],
+							"path": [
+								"api",
+								"messages",
+								"TIT"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Création",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"code\":\"TIT\",\n\t\"message\":\"J'ai cu voir un 'ros minet\"\n}"
+						},
+						"url": {
+							"raw": "http://app.docker.local/api/messages",
+							"protocol": "http",
+							"host": [
+								"app",
+								"docker",
+								"local"
+							],
+							"path": [
+								"api",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modification",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"code\":\"TIT\",\n\t\"message\":\"oups...\"\n}"
+						},
+						"url": {
+							"raw": "http://app.docker.local/api/messages/TIT",
+							"protocol": "http",
+							"host": [
+								"app",
+								"docker",
+								"local"
+							],
+							"path": [
+								"api",
+								"messages",
+								"TIT"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Suppression",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://app.docker.local/api/messages/TIT",
+							"protocol": "http",
+							"host": [
+								"app",
+								"docker",
+								"local"
+							],
+							"path": [
+								"api",
+								"messages",
+								"TIT"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
