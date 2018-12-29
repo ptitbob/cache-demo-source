@@ -20,7 +20,6 @@ Chaque utilisation est isolée dans une branche.
 * REDIS distribué - serveur REDIS
 ** https://github.com/ptitbob/cache-demo-source/tree/redis-distribue
 * Hazelcast
-** url...
 
 Le load balancing sur les deux noeud de l'application est assué par un NGINX qui permet aussi d'acceder à pgAdmin.
 
@@ -88,4 +87,42 @@ et pour un accès sur une donnée déjà en cache:
 https://redis.io/topics/rediscli[Liste des commandes redis-cli]
 
 == Hazelcast ==
+
+Branche : https://github.com/ptitbob/cache-demo-source/tree/hazelcast
+
+Dépendance a ajouter :
+
+[source,xml]
+----
+<dependency>
+    <groupId>com.hazelcast</groupId>
+    <artifactId>hazelcast</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.hazelcast</groupId>
+    <artifactId>hazelcast-spring</artifactId>
+</dependency>
+----
+
+Mais pour une raison que je m'explique pas encore, hazelcast semble ne pas aimer cette dépendance (donc a supprimer) :
+[source,xml]
+----
+<dependency>
+    <groupId>javax.cache</groupId>
+    <artifactId>cache-api</artifactId>
+</dependency>
+----
+
+Configuration de l'application :
+
+[source,yaml]
+----
+spring:
+  hazelcast:
+    config: classpath:hazelcast.xml
+----
+
+Et ajout du fichier de configuration `hazelcast.xml`.
+
+L'application packagée pour la containerisation (`app-1.0-HAZELCAST.jar`) est disponible avec l'image `shipstone/app-hazelcast:1.0`
 
