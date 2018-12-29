@@ -23,11 +23,19 @@ spring:
   # acces cache de type Redis
 
   # acces cache de type ehCache
-  cache:
-    jcache:
-      config: classpath:ehcache3-@spring.profiles.active@.xml
-    type: jcache
+#  cache:
+#    jcache:
+#      config: classpath:ehcache3-@spring.profiles.active@.xml
+#    type: jcache
   # acces cache de type ehCache
+
+  # Accès Hazelcast
+  cache:
+    type: hazelcast
+  hazelcast:
+    config: classpath:hazelcast-@spring.profiles.active@.xml
+  # Accès Hazelcast
+
 
 logging:
   pattern:
