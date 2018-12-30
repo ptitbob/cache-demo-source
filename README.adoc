@@ -78,6 +78,9 @@ Les applications associées exposent de même :
 
 == ehCache in-memory ==
 
+La gestion de cache in-memory sur un cluster, implique au minimun de pouvoir invalider le cache de manière asynchrone.
+Cet exemple arrivera en dernier, car cela neccessite un processus particulier.
+
 == ehCache distribué ==
 
 Branche: https://github.com/ptitbob/cache-demo-source/tree/ehcache-distribue
