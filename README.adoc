@@ -1,8 +1,10 @@
 = cache-demo-source =
 
-Demo (simple) accompagnant le presentation de la gestion du cache avec Spring
+Demo (simple) accompagnant la https://github.com/ptitbob/cache-demo[presentation de la gestion du cache avec Spring].
 
 == _Introduction_ ==
+
+NOTE: Cette doc n'explique pas les différences entre chaque système de cache, ni leur mise en application. Pour cela, la presentation et les articles (urls à venir) vous apporteront les réponses.
 
 L'application presente quelques URLs afin de valider la notion de cache.
 Elle organise ses donnée depuis 2 tables décrite dans le container `app-db`.
@@ -11,19 +13,27 @@ Et un autre accès HTTP revoyant des données relativement importante `zipcode-a
 
 image:documentation/application.png[]
 
-Chaque utilisation est isolée dans une branche.
+Les sources des application tierce sont dans les repertoires :
+
+* pingapp
+* zipcode
+
+Les sources des containers se trouvent dans le repertoire docker.
+Les sources des container de l'applicatifs sont propre à chaque branche (et donc chaque test de solution de cache).
+Si pour un test, il est requis un serveur (redis & ehcache distribué), celui-ci est décrit dans le fichier docker-compose.
+Les autres container (pingapp, zipcode [app & DB], base de donnée de l'applicatif).
+
+Chaque utilisation est isolée dans une branche
+(auquelle vous pouvez acceder via le lien en chaque début de section de cette documentation, en selectionnant la branche via l'IHM github ou en réalisant un checkout en local sur votre poste).
 
 * ehCache in-memory
-** url...
 * ehCache distribué - serveur terracotta OSS
-** https://github.com/ptitbob/cache-demo-source/tree/ehcache-distribue
 * REDIS distribué - serveur REDIS
-** https://github.com/ptitbob/cache-demo-source/tree/redis-distribue
 * Hazelcast
 
 Le load balancing sur les deux noeud de l'application est assué par un NGINX qui permet aussi d'acceder à pgAdmin.
 
-Afin de permettre l'accès via nGinx, vous devez configurer votre Hosts :
+Afin de permettre l'accès via nGinx, vous devez configurer votre fichier `Hosts` :
 
 ```
 # pour la demo spring cache
@@ -39,6 +49,16 @@ fe80::1%lo0 ping.docker.local
 fe80::1%lo0 app.docker.local
 127.0.0.1   app.docker.local
 ```
+
+Pour lancer l'envirronement de test, il suffit (dans la branche de votre choix) d'executer la commande suivante :
+
+```
+docker-compose -d up
+```
+
+TIP: Pour rappel, pour suivre les logs d'un container en particulier, executez la commande suivante : `docker logs -f [Nom du container]`
+
+
 
 == les URLs ==
 
@@ -60,9 +80,13 @@ Les applications associées exposent de même :
 
 == ehCache distribué ==
 
+Branche: https://github.com/ptitbob/cache-demo-source/tree/ehcache-distribue
+
 == Redis distribué ==
 
-Afin de verifier les accès au cache, `redis`offre un cli bien pratique.
+Branche: https://github.com/ptitbob/cache-demo-source/tree/redis-distribue
+
+Afin de verifier les accès au cache, `redis` offre un cli bien pratique.
 
 Pour y acceder :
 
