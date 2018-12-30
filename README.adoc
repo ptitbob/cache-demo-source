@@ -42,14 +42,19 @@ fe80::1%lo0 app.docker.local
 
 == les URLs ==
 
-L'application expose une serie d'URLs:
+L'application expose une serie d'URLs qui sont disponible sous forme de documentation swagger 2.0, ainsi que l'IHM swagger-ui :
 
-* Les message
-** liste : GET http://app.docker.local/api/messages
-** un message : GET http://app.docker.local/api/messages/(CODE)
-** création : POST http://app.docker.local/api/messages
-** suppression : DELETE http://app.docker.local/api/messages/(CODE)
-** modification : PUT http://app.docker.local/api/messages/[CODE]
+* local (execution) - swagger : http://localhost:8080/api/v2/api-docs
+** local (execution) - swagger UI : http://localhost:8080/api/swagger-ui.html
+* Container - swagger : http://app.docker.local/api/v2/api-docs
+** Container - swagger UI : http://app.docker.local/api/swagger-ui.html
+
+Les applications associées exposent de même :
+
+* http://ping.docker.local/api/v2/api-docs
+** http://ping.docker.local/api/swagger-ui.html
+* http://zipcode.docker.local/api/v2/api-docs
+** http://zipcode.docker.local/api/swagger-ui.htmldocs
 
 == ehCache in-memory ==
 
