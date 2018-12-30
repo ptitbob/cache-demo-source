@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.shipstone.demo.cache</groupId>
     <artifactId>app</artifactId>
-    <version>1.0-HAZELCAST</version>
+    <version>1.0.1-HAZELCAST</version>
     <name>app</name>
     <description>Demo project for Spring Boot</description>
 
