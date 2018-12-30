@@ -30,7 +30,7 @@ services:
   app-1:
     build:
       ./app-app/
-    image: shipstone/app:1.0
+    image: shipstone/app-ehcache:1.0
     container_name: app-1
     ports:
       - 8083:8080
@@ -47,7 +47,7 @@ services:
   app-2:
     build:
       ./app-app/
-    image: shipstone/app:1.0
+    image: shipstone/app-ehcache:1.0
     container_name: app-2
     ports:
       - 8084:8080
