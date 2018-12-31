@@ -1,156 +1,944 @@
 {
 	"info": {
-		"_postman_id": "01310a97-ee89-4923-9bdd-1a6d46b707f5",
-		"name": "cache-demo",
+		"_postman_id": "dc45672a-b524-457a-800e-697b97068f1d",
+		"name": "cache-demo Api Documentation",
+		"description": "Api Documentation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "messages",
+			"name": "caches",
 			"item": [
 				{
-					"name": "Liste",
+					"name": "getList",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://app.docker.local/api/messages",
+							"raw": "http://localhost:8080/api/caches?offset={{offset}}&pageNumber={{pageNumber}}&pageSize={{pageSize}}&paged={{paged}}&sort.sorted={{sort.sorted}}&sort.unsorted={{sort.unsorted}}&unpaged={{unpaged}}",
 							"protocol": "http",
 							"host": [
-								"app",
-								"docker",
-								"local"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"api",
-								"messages"
+								"caches"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "pageNumber",
+									"value": "{{pageNumber}}"
+								},
+								{
+									"key": "pageSize",
+									"value": "{{pageSize}}"
+								},
+								{
+									"key": "paged",
+									"value": "{{paged}}"
+								},
+								{
+									"key": "sort.sorted",
+									"value": "{{sort.sorted}}"
+								},
+								{
+									"key": "sort.unsorted",
+									"value": "{{sort.unsorted}}"
+								},
+								{
+									"key": "unpaged",
+									"value": "{{unpaged}}"
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Message (unitaire)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://app.docker.local/api/messages/TIT",
-							"protocol": "http",
-							"host": [
-								"app",
-								"docker",
-								"local"
-							],
-							"path": [
-								"api",
-								"messages",
-								"TIT"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Création",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"code\":\"TIT\",\n\t\"message\":\"J'ai cu voir un 'ros minet\"\n}"
-						},
-						"url": {
-							"raw": "http://app.docker.local/api/messages",
-							"protocol": "http",
-							"host": [
-								"app",
-								"docker",
-								"local"
-							],
-							"path": [
-								"api",
-								"messages"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modification",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"code\":\"TIT\",\n\t\"message\":\"oups...\"\n}"
-						},
-						"url": {
-							"raw": "http://app.docker.local/api/messages/TIT",
-							"protocol": "http",
-							"host": [
-								"app",
-								"docker",
-								"local"
-							],
-							"path": [
-								"api",
-								"messages",
-								"TIT"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Suppression",
+					"name": "clearAllCache",
 					"request": {
 						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {},
 						"url": {
-							"raw": "http://app.docker.local/api/messages/TIT",
+							"raw": "http://localhost:8080/api/caches",
 							"protocol": "http",
 							"host": [
-								"app",
-								"docker",
-								"local"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"api",
-								"messages",
-								"TIT"
+								"caches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clearCache",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/caches/:cacheName?key={{key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"caches",
+								":cacheName"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "cacheName",
+									"value": "{{cacheName}}"
+								}
 							]
 						}
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Folder for caches"
+		},
+		{
+			"name": "cities",
+			"item": [
+				{
+					"name": "getByInsee",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cities/:insee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cities",
+								":insee"
+							],
+							"variable": [
+								{
+									"key": "insee",
+									"value": "{{insee}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for cities"
+		},
+		{
+			"name": "error",
+			"item": [
+				{
+					"name": "error",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/error",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "error",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/error",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "error",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/error",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "error",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/error",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "error",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/error",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "error",
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/error",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "error",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/error",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"error"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for error"
+		},
+		{
+			"name": "messages",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/messages?offset={{offset}}&pageNumber={{pageNumber}}&pageSize={{pageSize}}&paged={{paged}}&sort.sorted={{sort.sorted}}&sort.unsorted={{sort.unsorted}}&unpaged={{unpaged}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "pageNumber",
+									"value": "{{pageNumber}}"
+								},
+								{
+									"key": "pageSize",
+									"value": "{{pageSize}}"
+								},
+								{
+									"key": "paged",
+									"value": "{{paged}}"
+								},
+								{
+									"key": "sort.sorted",
+									"value": "{{sort.sorted}}"
+								},
+								{
+									"key": "sort.unsorted",
+									"value": "{{sort.unsorted}}"
+								},
+								{
+									"key": "unpaged",
+									"value": "{{unpaged}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createMessage",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "messageDto"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/messages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMessageByCode",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/messages/:code",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages",
+								":code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "{{code}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMessage",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "messageDto"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/messages/:code",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages",
+								":code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "{{code}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMessage",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/messages/:code",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages",
+								":code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "{{code}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for messages"
+		},
+		{
+			"name": "people",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/people?login={{login}}&nom={{nom}}&offset={{offset}}&pageNumber={{pageNumber}}&pageSize={{pageSize}}&paged={{paged}}&prenom={{prenom}}&sort.sorted={{sort.sorted}}&sort.unsorted={{sort.unsorted}}&unpaged={{unpaged}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"people"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "{{login}}"
+								},
+								{
+									"key": "nom",
+									"value": "{{nom}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "pageNumber",
+									"value": "{{pageNumber}}"
+								},
+								{
+									"key": "pageSize",
+									"value": "{{pageSize}}"
+								},
+								{
+									"key": "paged",
+									"value": "{{paged}}"
+								},
+								{
+									"key": "prenom",
+									"value": "{{prenom}}"
+								},
+								{
+									"key": "sort.sorted",
+									"value": "{{sort.sorted}}"
+								},
+								{
+									"key": "sort.unsorted",
+									"value": "{{sort.unsorted}}"
+								},
+								{
+									"key": "unpaged",
+									"value": "{{unpaged}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createPerson",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "personDto"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/people",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPersonByLogin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/people/:login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"people",
+								":login"
+							],
+							"variable": [
+								{
+									"key": "login",
+									"value": "{{login}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePerson",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "personDto"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/people/:login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"people",
+								":login"
+							],
+							"variable": [
+								{
+									"key": "login",
+									"value": "{{login}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateName",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "personDto"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/people/:login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"people",
+								":login"
+							],
+							"variable": [
+								{
+									"key": "login",
+									"value": "{{login}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/people/:login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"people",
+								":login"
+							],
+							"variable": [
+								{
+									"key": "login",
+									"value": "{{login}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCity",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "personDto"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/people/:login/city",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"people",
+								":login",
+								"city"
+							],
+							"variable": [
+								{
+									"key": "login",
+									"value": "{{login}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for people"
+		},
+		{
+			"name": "ping",
+			"item": [
+				{
+					"name": "pingMessage",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/ping?login={{login}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ping"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "{{login}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for ping"
 		}
 	]
 }
