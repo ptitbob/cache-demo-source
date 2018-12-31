@@ -31,7 +31,7 @@ Chaque utilisation est isolée dans une branche
 * REDIS distribué - serveur REDIS
 * Hazelcast
 
-Le load balancing sur les deux noeud de l'application est assué par un NGINX qui permet aussi d'acceder à pgAdmin.
+Le load balancing sur les deux noeud de l'application est assuré par un NGINX qui permet aussi d'acceder à pgAdmin.
 
 Afin de permettre l'accès via nGinx, vous devez configurer votre fichier `Hosts` :
 
@@ -75,6 +75,27 @@ Les applications associées exposent de même :
 ** http://ping.docker.local/api/swagger-ui.html
 * http://zipcode.docker.local/api/v2/api-docs
 ** http://zipcode.docker.local/api/swagger-ui.htmldocs
+
+== pgAdmin ==
+
+pgAdmin vous permet de vous connecter au différentes base postgres utilisé.
+
+Pour vous connecter :
+
+* url : http://pgadmin.docker.local/
+* login (mail) : pgadmin4@pgadmin.org
+* password : admin
+
+Pour acceder aux DB, vous devrez au préalable les enregistrer.
+
+* DB de l'application de test
+** host : app-db
+** user : postgres
+** password : postgres
+* DB de l'application ville (insee & code postal)
+** host : zipcode-db
+** user : postgres
+** password : postgres
 
 == ehCache in-memory ==
 
