@@ -62,22 +62,24 @@
             <artifactId>cache-api</artifactId>
         </dependency>
         <!-- Redis -->
-        <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-        -->
         <!-- ehCache -->
+        <!--
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
         </dependency>
+        -->
         <!-- ehCache partagé (cluster) -->
+        <!--
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache-clustered</artifactId>
         </dependency>
+        -->
         <!-- accès aux cache partagé -->
 
         <dependency>
