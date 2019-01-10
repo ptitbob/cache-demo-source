@@ -28,3 +28,7 @@ create table adm_message (
   code varchar(10) not null,
   message varchar(100)
 );
+
+INSERT INTO person (login, firstname, lastname, city_insee, zipcode, comments, code_message, creator, created)
+  VALUES ('turing-a', 'Alan', 'Turing', '37261', null, 'Est ce un humain ?', 'TOT', 'lui', now());
+INSERT INTO adm_message (code, message) VALUES ('TOT', 'la tête a toto');
