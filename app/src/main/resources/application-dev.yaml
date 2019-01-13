@@ -9,9 +9,9 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
   # acces cache de type Redis
-  redis:
-    host: localhost
-    port: 6379
+#  redis:
+#    host: localhost
+#    port: 6379
   # acces cache de type Redis
 
 logging:

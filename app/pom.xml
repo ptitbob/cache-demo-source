@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.shipstone.demo.cache</groupId>
     <artifactId>app</artifactId>
-    <version>1.0.1-EHCACHE</version>
+    <version>1.0</version>
     <name>app</name>
     <description>Demo project for Spring Boot</description>
 
@@ -74,10 +74,12 @@
             <artifactId>ehcache</artifactId>
         </dependency>
         <!-- ehCache partagé (cluster) -->
+        <!--
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache-clustered</artifactId>
         </dependency>
+        -->
         <!-- accès aux cache partagé -->
 
         <dependency>
