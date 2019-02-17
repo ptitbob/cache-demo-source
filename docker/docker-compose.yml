@@ -29,7 +29,8 @@ services:
   # Applications
   app-1:
     build:
-      ./app-app/
+      context: ../app
+      dockerfile:  ../docker/app-app/Dockerfile
     image: shipstone/app-redis:1.0
     container_name: app-1
     ports:
@@ -38,17 +39,13 @@ services:
       - pingapp
       - zipcode
       - app-db
-      - redis
     depends_on:
       - pingapp
       - zipcode
       - app-db
-      - redis
     networks:
       - cache_net
   app-2:
-    build:
-      ./app-app/
     image: shipstone/app-redis:1.0
     container_name: app-2
     ports:
@@ -57,12 +54,8 @@ services:
       - pingapp
       - zipcode
       - app-db
-      - redis
     depends_on:
-      - pingapp
-      - zipcode
-      - app-db
-      - redis
+      - app-1
     networks:
       - cache_net
   pingapp:

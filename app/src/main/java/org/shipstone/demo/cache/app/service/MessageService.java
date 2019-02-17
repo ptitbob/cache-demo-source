@@ -64,4 +64,9 @@ public class MessageService {
     Message message = getMessageByCode(code);
     messageRepository.delete(message);
   }
+
+  public boolean isMessageExistWith(String code) {
+    return messageRepository.existsMessageByCode(code);
+  }
+
 }

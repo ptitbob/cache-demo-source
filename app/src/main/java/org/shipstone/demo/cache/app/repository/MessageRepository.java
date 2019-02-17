@@ -31,6 +31,8 @@ public interface MessageRepository extends JpaRepository<Message, Long>, JpaSpec
   @Query("select count(m) > 0 from Message m where upper(m.code) = :code")
   boolean messageExist(@Param("code") String code);
 
+  boolean existsMessageByCode(String code);
+
   @Transactional
   @CacheEvict(key = "#p0.code")
   void delete(Message message);
