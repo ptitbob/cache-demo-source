@@ -29,7 +29,8 @@ services:
   # Applications
   app-1:
     build:
-      ./app-app/
+      context: ../app
+      dockerfile:  ../docker/app-app/Dockerfile
     image: shipstone/app-ehcache:1.0
     container_name: app-1
     ports:
@@ -45,8 +46,6 @@ services:
     networks:
       - cache_net
   app-2:
-    build:
-      ./app-app/
     image: shipstone/app-ehcache:1.0
     container_name: app-2
     ports:
@@ -56,9 +55,7 @@ services:
       - zipcode
       - app-db
     depends_on:
-      - pingapp
-      - zipcode
-      - app-db
+      - app-1
     networks:
       - cache_net
   pingapp:
